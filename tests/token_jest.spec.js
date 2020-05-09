@@ -41,4 +41,21 @@ describe('tokenize', () => {
     ])
     expect(result).toEqual(expected)
   })
+
+  it('Should return tokens 3', () => {
+    const data = 'foo ( baz ) bar'
+    const result = tokenize(data)
+    const expected = makeTokens([
+      [TOKEN.ITEM, 'foo', 0],
+      [TOKEN.SPACE, ' ', 3],
+      [TOKEN.LEFT_BRACKET, '(', 4],
+      [TOKEN.SPACE, ' ', 5],
+      [TOKEN.ITEM, 'baz', 6],
+      [TOKEN.SPACE, ' ', 9],
+      [TOKEN.RIGHT_BRACKET, ')', 10],
+      [TOKEN.SPACE, ' ', 11],
+      [TOKEN.ITEM, 'bar', 12]
+    ])
+    expect(result).toEqual(expected)
+  })
 })
